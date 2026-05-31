@@ -1,0 +1,465 @@
+input{
+  color: rgb(255, 250, 244);
+  background-color: rgb(19, 18, 18);
+  border-color: rgba(119, 136, 153, 0);
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('../public/images/black.webp');
+}
+p{
+  color: rgb(255, 250, 244);
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a{
+  color: rgb(255, 140, 0);
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+}
+.balance{
+  display: flex;
+  color: rgb(68, 255, 152);
+  top: 10%;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  right: 4%;
+}
+.hBalance{
+  font-size: larger;
+}
+button{
+  background-color: blueviolet;
+  color: bisque;
+}
+
+.app-container {
+  min-height: 100cqh;
+  overflow-y: auto;
+}
+/* 1. El contenedor exterior se mantiene igual (mismo fondo y centrado) */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url('ruta-de-tu-imagen.jpg'); /* Tu fondo oscuro */
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 2. Tu nuevo formulario de registro */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;              /* Mantiene la separación limpia entre los 4 inputs y el botón */
+  width: 100%;            /* Responsivo en móviles */
+  max-width: 380px;       /* Ancho ideal en escritorio */
+  padding: 40px 30px;
+  background: rgba(0, 0, 0, 0.4); /* Fondo sutil para que contraste con la textura */
+  border-radius: 8px;
+  align-items: center;    /* Centra los textos y el botón internamente */
+  box-sizing: border-box;
+}
+
+/* 3. Título personalizado */
+.form-container .title {
+  color: #9d87ff;         /* Mismo tono celeste o el que prefieras */
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* 4. Estilo unificado para los 4 inputs */
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* 5. El botón de registro */
+.form-container .btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #6200ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 5px;       /* Un pequeño extra de espacio antes del botón */
+}
+
+.form-container .btn:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+/* 6. Enlaces y textos inferiores */
+.form-container p {
+  margin: 5px 0 0 0;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.form-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+/* ==========================================
+   ESTILOS EXCLUSIVOS PARA PANTALLA DE LOGIN
+   ========================================== */
+
+/* Fondo e inicio de Flexbox aislado */
+.auth-login-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url('tu-fondo-oscuro.jpg'); /* Tu imagen texturizada */
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* La tarjeta del login (adaptable a móvil y PC) */
+.auth-login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 380px; /* Tamaño ideal en escritorio, se encoge en móvil */
+  padding: 40px 30px;
+  background: rgba(0, 0, 0, 0.45); /* Capa oscura sutil para contrastar */
+  border-radius: 8px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Título celeste */
+.auth-login-title {
+  color: #9d87ff;
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Inputs del login */
+.auth-login-card input {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Botón del login */
+.auth-login-card .btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #6200ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.auth-login-card .btn:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+/* Texto inferior ("¿No tienes cuenta?") */
+.auth-login-footer {
+  margin: 5px 0 0 0;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+
+/* Mensajes de error */
+.auth-login-error {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+
+  padding: 30px;
+  padding-left: 10%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.custom-card-img {
+  width: 100%;
+  height: 250px;
+
+  object-fit: cover;
+}
+
+.title {
+  color:rgb(29, 146, 182);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 28px;
+}
+.items-orders{
+  font-size: 20px;
+  border-color: aqua;
+  border-width: 5px;
+}
+#name{
+
+  margin-top: 10%;
+  margin-left: 40.5%;
+  font-weight: bold;
+}
+
+#init{
+  position: fixed;
+  margin-top: 10%;
+  margin-left: 2%;
+}
+#items{
+  background-color: rgb(0, 0, 0);
+  color: blue;
+  border-color: rgb(22, 22, 22);
+  width: 15%;
+  cursor: pointer;
+  font-size: larger;
+  padding-top: 20px;
+}
+#list{
+  padding-top: 10%;
+}
+/* 1. ESTILO BASE: Pensado para Móviles */
+.planes-container {
+  display: flex;
+  flex-direction: column; /* Apila las tarjetas verticalmente */
+  gap: 20px;              /* Espacio de separación entre tarjetas */
+  padding: 15px;          /* Margen interno para que no peguen al borde de la pantalla */
+  width: 100%;
+  max-width: 400px;       /* Evita que en móviles grandes la tarjeta se estire infinitamente */
+  margin: 0 auto;         /* Centra todo el bloque en la pantalla */
+}
+
+.tarjeta {
+  width: 100%;            /* Cada tarjeta toma el ancho completo disponible */
+  box-sizing: border-box;
+}
+
+/* 2. ADAPTACIÓN: Para pantallas medianas/grandes (Tablets y Computadoras) */
+@media (min-width: 768px) {
+  .planes-container {
+    flex-direction: row;     /* Vuelve a poner las tarjetas una al lado de la otra */
+    justify-content: center; /* Las centra horizontalmente */
+    align-items: stretch;    /* Hace que todas las tarjetas tengan exactamente la misma altura */
+    max-width: 1200px;       /* Ancho máximo en monitores grandes */
+  }
+
+  .tarjeta {
+    flex: 1;                 /* Distribuye el espacio equitativamente entre las 3 */
+    max-width: 350px;        /* Controla el ancho máximo de cada tarjeta individual */
+  }
+}
+/* ==========================================
+   ESTILOS BASE (ESCRITORIO PRIMERO)
+   ========================================== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Separa Logo, Centro y Derecha */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #111; /* Color oscuro de tu temática */
+  color: white;
+  font-family: monospace;
+}
+
+/* Contenedor del Logo */
+.nav-spacer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-spacer img {
+  height: 30px; /* Controla el tamaño de tu logo */
+  width: auto;
+}
+
+/* Grupos de enlaces (Centro y Derecha) */
+.nav-group {
+  display: flex;
+  gap: 20px; /* Espacio entre links */
+}
+
+.nav-group a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.nav-group a:hover, 
+#select {
+  color: #8153ff !important; /* Tu celeste característico para el activo */
+}
+
+
+/* ==========================================
+   MEDIA QUERY PARA MÓVILES (Pantallas < 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Apila el contenido verticalmente */
+    gap: 15px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* Los grupos de enlaces se vuelven filas flexibles que envuelven si no caben */
+  .nav-group {
+    flex-wrap: wrap;       /* Si los links no caben en una línea, bajan solos */
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* Quitamos el margen derecho inline que tenías en JS para que no rompa el centrado en móvil */
+  .nav-right {
+    margin-right: 0 !important; 
+  }
+  
+  .nav-group a {
+    font-size: 0.9rem; /* Un pelo más chico para que quepa mejor en celulares */
+    padding: 5px 10px;
+  }
+}
+#select{
+  color: rgb(185, 63, 255);
+  border-radius: 8dvb;
+  text-decoration: underline;
+  text-underline-offset: 23px;
+  width: auto;
+  cursor: pointer;
+  text-align: center;
+}
+
+.header{
+  color: rgb(198, 112, 255);
+  font-size: large;
+  padding-top: 5%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#user{
+  margin-top: 10.15%;
+  display: flex;
+  position: fixed;
+  margin-left: 55%;
+  text-align: center;
+}
+#nom{
+  margin-top: 10%;
+  display: flex;
+  position: fixed;
+  margin-left: 30%;
+  color: bisque;
+  font-size: x-large;
+}
+#id{
+  margin-top: 15.15%;
+  display: flex;
+  position: fixed;
+  margin-left: 55%;
+  text-align: center;
+}
+#idMsg{
+  margin-top: 15%;
+  display: flex;
+  position: fixed;
+  margin-left: 30%;
+  color: bisque;
+  font-size: x-large;
+}
+#email-profile{
+  margin-top: 20%;
+  display: flex;
+  position: fixed;
+  margin-left: 30%;
+  color: bisque;
+  font-size: x-large;
+}
+#logout{
+  display: flex;
+  margin-top: 10%;
+  margin-left: 42%;
+  align-items: center;
+}
+#turn{
+  display: flex;
+  margin-top: 10%;
+  font-size: small;
+  margin-left: 65%;
+  height: auto;
+  background-color: rgba(240, 248, 255, 0);
+  border-color: blueviolet;
+  color: blueviolet;
+  transition: background-color 0.2s;
+}
+#turn:active{
+  background-color: rgb(255, 80, 80);
+}
+#inp{
+  position: fixed;
+  display: flex;
+  margin-top: 10%;
+  margin-left: 75%;
+  font-size: small;
+  border-radius: 5%;
+  background-color: rgba(240, 248, 255, 0);
+  border-color: blueviolet;
+  color: blueviolet;
+}
+#inp:focus{
+  outline: none;
+  border: 2px solid rgb(126, 78, 126)
+}
