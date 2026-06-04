@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
+import NavBar from "../../components/NavBar";
 import { Navigate } from "react-router-dom";
 
-import CardItem from "../components/CardItem";
+import CardItem from "../../components/CardItem/CardItem";
 
 type Product = {
   id: number;
@@ -136,19 +136,20 @@ function Store() {
             action={() => addToCart(prod.id, 1)}
             action2={() => buy(prod.id, 1)}
             key={prod.id}
-            btnColor="rgb(44, 44, 44)"
+            btnColor="linear-gradient(135deg, #3c008b, #001279)"
+            btnColor2="linear-gradient(135deg, #2f43f7, #8400ff)"
             price={prod.price}
             stock={prod.stock}
             level={prod.requiredLevel}
-            titleColor="violet"
+            titleColor="white"
             btnText2={prod.stock > 1 ? "Agregar a carrito" : "Agotado"}
             title={prod.name}
             background="rgb(37, 37, 37)"
             opacity={prod.stock > 0 ? "1" : "0.3"}
             img={`/images/${prod.image}`}
-            btnText="Comprar"
+            btnText="Detalles"
             textSize={22}
-            textColor="rgb(23, 170, 255)"
+            textColor="rgb(255, 255, 255)"
             btnState={prod.stock > 0 ? false : true}
           />
         ))}

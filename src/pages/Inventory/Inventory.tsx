@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import NavBar from '../components/NavBar'
+import NavBar from '../../components/NavBar'
 import { Navigate } from 'react-router-dom';
-import MyInventory from '../components/MyInventory';
+import MyInventory from '../../components/MyInventory';
+import CardMyProduct from '../../components/CardMyProduct/CardMyProduct';
 type Product = {
     userId: number;
     productId: number;
@@ -52,9 +53,12 @@ function Inventory() {
     }
   return (
   
-    <div className='app-container'>
+    <div className='-container'>
       <NavBar selected='INVENTARIO'/>
-      <MyInventory products={product}/>
+      {/* <MyInventory products={product}></MyInventory> */}
+      <CardMyProduct productName='Fondo galaxia'></CardMyProduct>
+      <CardMyProduct productName='Fondo galaxia'></CardMyProduct>
+      <CardMyProduct productName='Fondo galaxia'></CardMyProduct>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
+import NavBar from "../../components/NavBar";
 import { Navigate } from "react-router-dom";
 
 function Cart() {
@@ -129,7 +129,7 @@ function Cart() {
       <NavBar selected="carrito" />
       <div>
         <div
-          style={{ position: "absolute", display: display, marginLeft: "35%" }}
+          style={{ position: "fixed", display: display, marginLeft: "35%" }}
           className={`alert alert-${alertState}`}
           role="alert"
         >

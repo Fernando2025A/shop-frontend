@@ -4,6 +4,7 @@ type Props = {
   img: string;
   title: string;
   btnColor: string;
+  btnColor2: string;
   btnText2: string;
   textSize: number;
   textColor: string;
@@ -30,6 +31,7 @@ function CardItem({
   titleColor,
   background,
   btnColor,
+  btnColor2,
   textColor,
   level,
   btnState,
@@ -73,11 +75,11 @@ function CardItem({
       <div className="card-body">
         <button
           style={{
-            backgroundColor: btnColor,
+            background: btnColor,
             marginBottom: "5%",
             textDecoration: "none",
             color: textColor,
-            borderRadius: '7%'
+            borderRadius: '8px'
           }}
           className="card-link"
           disabled={btnState}
@@ -88,11 +90,11 @@ function CardItem({
 
         <button
           style={{
-            backgroundColor: btnColor,
+            background: btnColor2,
             marginBottom: "5%",
             textDecoration: "none",
             color: textColor,
-            borderRadius: '7%'
+            borderRadius: '8px'
           }}
           className="card-link"
           onClick={action}
@@ -114,7 +116,7 @@ function CardItem({
         >
           Stock: {stock}
         </p>
-        <button style={{ borderRadius: '50%', borderRight: "10%" }}>!</button>
+        <button style={{ borderRadius: '50%', borderRight: "10%"}}>!</button>
         <button style={{ display: isAdmin ? 'flex' : 'none', borderRadius: '100%', backgroundColor: 'red', color: 'lightblue'}}>+</button>
         <button style={{ display: isAdmin ? 'flex' : 'none', borderRadius: '100%', backgroundColor: 'red', color: 'lightblue'}}>🖋️</button>
       </div>

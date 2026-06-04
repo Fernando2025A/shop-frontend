@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "../App.css";
+import "./NavBar.css";
 import logo from "../../tienda.png";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";

@@ -1,0 +1,72 @@
+.navbar {
+  display: flex;
+ align-items: center;
+  padding: 10px 20px;
+  background-color: #111; /* Color oscuro de tu temática */
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Contenedor del Logo */
+.nav-spacer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-spacer img {
+  height: 30px; /* Controla el tamaño de tu logo */
+  width: auto;
+}
+
+/* Grupos de enlaces (Centro y Derecha) */
+.nav-group {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  gap: 30px; /* Espacio entre links */
+}
+
+.nav-group a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.nav-group a:hover, 
+#select {
+  color: #8f53ff !important; /* Tu celeste característico para el activo */
+}
+
+
+/* ==========================================
+   MEDIA QUERY PARA MÓVILES (Pantallas < 1080px)
+   ========================================== */
+@media (max-width: 1080px) {
+  .navbar {
+    flex-direction: column; /* Apila el contenido verticalmente */
+    gap: 15px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* Los grupos de enlaces se vuelven filas flexibles que envuelven si no caben */
+  .nav-group {
+    flex-wrap: wrap;       /* Si los links no caben en una línea, bajan solos */
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* Quitamos el margen derecho inline que tenías en JS para que no rompa el centrado en móvil */
+  .nav-right {
+    margin-right: 0 !important; 
+  }
+  
+  .nav-group a {
+    font-size: 0.9rem; /* Un pelo más chico para que quepa mejor en celulares */
+    padding: 5px 10px;
+  }
+}

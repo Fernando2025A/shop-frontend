@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../../App.css";
+import "./Login.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -102,8 +103,16 @@ function Login() {
         </button>
 
         <p className="auth-login-footer">¿No tienes cuenta?</p>
-        <Link style={{ color: "rgb(112, 3, 255)", textDecoration: "underline", fontSize: "16px" }} to="/register">crea una aquí</Link>
-       
+        <Link
+          style={{
+            color: "rgb(112, 3, 255)",
+            textDecoration: "underline",
+            fontSize: "16px",
+          }}
+          to="/register"
+        >
+          crea una aquí
+        </Link>
 
         {text && (
           <p id="ver" style={{ color: color }} className="auth-login-error">

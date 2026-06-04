@@ -1,0 +1,11 @@
+.balance{
+  display: flex;
+  color: rgb(68, 255, 152);
+  top: 10%;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  right: 4%;
+}
+.hBalance{
+  font-size: larger;
+}

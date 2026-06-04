@@ -1,5 +1,5 @@
-import React from 'react'
-import NavBar from '../components/NavBar'
+import './Tasks.css'
+import NavBar from '../../components/NavBar'
 
 
 function Tasks() {
@@ -11,11 +11,9 @@ function Tasks() {
     return res;
   }
   return (
-    <div style={{ display: "grid"}} className='app-container'>
+    <div className='app-container'>
       <NavBar selected='tareas'></NavBar>
-      <h1 style={{ marginLeft: "40%", color: "bisque", marginTop: "0%"}}>Gana saldo con tareas</h1>
-      <label style={{ color: "white", fontSize: "18px", gridRow: "2", gridColumn: "1"}}>Agrega un amigo</label>
-      <div>
+      <div className='tasks-container'>
         <p>Inicio de sesión diario</p>
         <button onClick={getReward}>Reclamar</button>
       </div>

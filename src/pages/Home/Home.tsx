@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import "../App.css";
+import "../../App.css";
 import { Navigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import Head from "../components/Head";
-import Card from "../components/Card";
-import profile from "../assets/profile.png";
-import store from "../assets/store.png";
-import order from "../assets/order.png";
-import Balance from "../components/Balance";
+import NavBar from "../../components/NavBar";
+import Head from "../../components/Head";
+import Card from "../../components/Card/Card";
+import profile from "../../assets/profile.png";
+import store from "../../assets/store.png";
+import order from "../../assets/order.png";
+import Balance from "../../components/Balance/Balance";
 
 //type Props = {}
 
@@ -129,6 +129,9 @@ function Home() {
         top={35}
         left={70}
       ></Card>
+      <footer className='footer-container'>
+        
+      </footer>
     </div>
   );
 }

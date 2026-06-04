@@ -1,3 +1,4 @@
+import "./Balance.css"
 
 type Props = {
   amount: number;

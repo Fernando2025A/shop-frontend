@@ -1,0 +1,87 @@
+/* Fondo e inicio de Flexbox aislado */
+.auth-login-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(90deg, #000000, #00303f);
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* La tarjeta del login (adaptable a móvil y PC) */
+.auth-login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 380px; /* Tamaño ideal en escritorio, se encoge en móvil */
+  padding: 40px 30px;
+  background: rgba(0, 0, 0, 0.45); /* Capa oscura sutil para contrastar */
+  border-radius: 8px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Título celeste */
+.auth-login-title {
+  background: linear-gradient(100deg,#9d87ff, #007bff);
+  background-clip: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Inputs del login */
+.auth-login-card input {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Botón del login */
+.auth-login-card .btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(#6200ff, #007bff);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.auth-login-card .btn:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+/* Texto inferior ("¿No tienes cuenta?") */
+.auth-login-footer {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 0 0;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-login-info{
+  font-size: 1rem;
+}
+/* Mensajes de error */
+.auth-login-error {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  text-align: center;
+}

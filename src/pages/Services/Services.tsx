@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import NavBar from "../../components/NavBar";
 import { useEffect, useState } from "react";
-import gold from "../assets/gold.png";
-import silver from "../assets/silver.png";
-import bronze from "../assets/bronze.png";
-import CardPlan from "../components/CardPlan";
-import CardInfo from "../components/CardInfo";
+import gold from "../../assets/gold.png";
+import silver from "../../assets/silver.png";
+import bronze from "../../assets/bronze.png";
+import CardPlan from "../../components/CardPlan/CardPlan";
+import CardInfo from "../../components/CardInfo/CardInfo";
 
 type Benefits = {
   discount: number;
@@ -112,6 +112,15 @@ function Services() {
   }
 
   async function getPlan(id: number) {
+    if (id < planId) {
+      
+      return (
+        <div className="card">
+          <p>¡Espera! ¡Tu plan actual es mejor que este!</p>
+        </div>
+      );
+    }
+
     const response = await fetch(`${apiUrl}/plan/get/${id}`, {
       method: "POST",
       headers: {
@@ -128,7 +137,7 @@ function Services() {
     }
   }
   return (
-    <div className="planes-container">
+    <div className="app-container">
       <NavBar selected="SERVICIOS" />
       <CardInfo
         textColor="blueviolet"
@@ -137,12 +146,17 @@ function Services() {
         left="39.5"
         top="5"
         display={display}
+
         img={img}
       />
       <button
         style={{
           display: display,
+          position: "fixed",
+          top: "85%",
+          marginLeft: "40%",
           zIndex: "3",
+          background: "linear-gradient(135deg, #78f72f, #1d4e00)"
         }}
         disabled={!active}
         onClick={() => getPlan(id)}
@@ -153,11 +167,13 @@ function Services() {
       </button>
       <button
         style={{
-          position: "fixed",
           display: display,
           top: "85%",
-          marginLeft: "50%",
-          zIndex: "3",
+          marginLeft: "54%",
+          position: "fixed",
+          zIndex: "2",
+          backgroundColor: "red",
+          background: "linear-gradient(135deg, #f72f8c, #630000)"
         }}
         disabled={!active}
         onClick={() =>
@@ -165,7 +181,6 @@ function Services() {
             ? (setActive(false), setDisplay("none"), setOpacity("100"))
             : (setActive(true), setDisplay("flex"))
         }
-        type="button"
         className="btn btn-danger"
       >
         Cancelar
@@ -187,13 +202,15 @@ function Services() {
         textColor="rgb(168, 150, 48)"
         text={[
           `✔️${benefits[2]?.discount * 100}% de descuento en todos los productos`,
+
           `✔️Entrega de productos ${benefits[2]?.shippingSpeed * 100}% más rápida`,
+
           "✔️Acceso a características avanzadas",
         ]}
         titleColor="yellow"
         title={`Gold ${plan.toLocaleLowerCase() === "gold" ? "(actual)" : ""}`}
-        top={20}
-        left={10}
+        // top={30}
+        // left={10}
         img={gold}
       />
 
@@ -218,8 +235,6 @@ function Services() {
         ]}
         titleColor="rgb(168, 168, 168)"
         title={`Silver ${plan.toLocaleLowerCase() === "silver" ? "(actual)" : ""}`}
-        top={20}
-        left={40}
         img={silver}
       />
 
@@ -243,12 +258,11 @@ function Services() {
         ]}
         titleColor="rgb(182, 123, 68)"
         title={`Bronze ${plan.toLocaleLowerCase() === "bronze" ? "(Plan actual)" : ""}`}
-        top={20}
-        left={70}
         img={bronze}
       />
     </div>
   );
+
 }
 
 export default Services;

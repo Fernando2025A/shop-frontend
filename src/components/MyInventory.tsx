@@ -2,6 +2,7 @@ import React from 'react'
 
 type Props = {
   products: Product[];
+  
 }
 
 
@@ -31,7 +32,7 @@ function MyInventory({ products }: Props) {
           <th>Reclamado</th>
           <th>Items</th>
           <th>ID de producto</th>
-          <th>Detalles</th>
+          <th></th>
         </tr>
       </thead>
        <tbody>
@@ -41,7 +42,7 @@ function MyInventory({ products }: Props) {
             <td>{o.quantity}</td>
             <td>{o.productId}</td>
             <td>
-              <button>Ver</button>
+              <button style={{ padding: '10px 20px'}}>Ver</button>
             </td>
           </tr>
         ))}

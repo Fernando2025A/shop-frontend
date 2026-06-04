@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import NavBar from '../components/NavBar'
+import NavBar from '../../components/NavBar'
 import { Navigate } from 'react-router-dom';
-import MyOrders from '../components/MyOrders';
+import MyOrders from '../../components/MyOrders';
 
 type Pedido = {
   id: number;
