@@ -29,10 +29,12 @@
 }
 
 .nav-group a {
-  color: #ccc;
+  color: #c0c0c0;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.2s;
+  font-family: Arial, Helvetica, cursive;
+  font-weight: bold;
 }
 
 .nav-group a:hover, 

@@ -1,27 +1,76 @@
 .my-product-container {
   display: flex;
-  flex-direction: row;       /* Alinea los hijos horizontalmente */
+  flex-direction: column;       /* Alinea los hijos horizontalmente */
   flex-wrap: wrap;           /* ¡CLAVE! Si no hay espacio, los manda abajo */
-  gap: 40px;                 /* Separación uniforme entre las tarjetas */
+  gap: 80px;                 /* Separación uniforme entre las tarjetas */
   width: 90%;                /* Ocupa casi todo el ancho de la pantalla */
-  margin-left: 5%;
 }
 .product-card {
-  width: 250px;              /* Ancho fijo para cada tarjeta */
-  height: 400px;             /* Alto fijo para cada tarjeta */
-  background: linear-gradient(200deg, #9dffb5, #2f00ff);
+  margin-left: 5%;
+  display: flex;
+  width: 90%;              /* Ancho fijo para cada tarjeta */
+  height: 300px;             /* Alto fijo para cada tarjeta */
+  background: linear-gradient(160deg, #000000ad, #130068ad);
   border-radius: 8px;        /* Opcional: bordes redondeados para tus cards */
-  padding: 15px;
+  padding: 0px;
+  gap: 50px;
   box-sizing: border-box;    /* Evita que el padding altere el tamaño de la tarjeta */
 }
+.product-card p {
+  font-size: 16px;
+  color: rgb(131, 131, 131);
+}
+.product-card h3 {
+  background: linear-gradient(1deg,#ffffff, #2209ff);
+  background-clip: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-top: 3%;
+}
+.card-content {
+  padding: 0px 20px 20px 10px;
+  width: 90%;
+}
 .product-card img {
-  width: 100%;           /* ¡OBLIGATORIO! Escala el ancho de la imagen al 100% de la tarjeta */
-  height: 200px;         /* Controla el alto de la imagen dentro de la tarjeta */
-  object-fit: cover;    /* ¡RECOMENDADO! Recorta o ajusta la imagen sin distorsionarla */
+  padding-top: 3%;
+  width: 200px;           /* ¡OBLIGATORIO! Escala el ancho de la imagen al 100% de la tarjeta */
+  height: 240px;         /* Controla el alto de la imagen dentro de la tarjeta */
   border-radius: 8px;    /* Redondea los bordes de la imagen para que coincida */
   margin-bottom: 10px;  /* Espacio con el texto inferior */
 }
+.card-content span{
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+}
+.card-content button {
+  background: linear-gradient(120deg,rgb(0, 113, 148), rgb(5, 0, 80));
+  border-radius: 8px;
+  color: lightblue;
+  width: 150px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-style: cursive;
+}
+/* CONTINUAR: AGREGAR @Medi PARA PANTALLAS PUEQUEÑAS*/
+@media (max-width: 768px) {
+ .product-card {
+  margin-left: 5%;
+  display: flex;
+  width: 90%;              /* Ancho fijo para cada tarjeta */
+  height: min-content;             /* Alto fijo para cada tarjeta */
+  background: linear-gradient(160deg, #000000, #130068);
+  border-radius: 8px;        /* Opcional: bordes redondeados para tus cards */
+  padding: 0px;
+  gap: 50px;
+  box-sizing: border-box;    /* Evita que el padding altere el tamaño de la tarjeta */
+}
+}
+.card-content button:disabled {
+  background: #333;
+  color: #ffffff;
+  cursor: not-allowed;
+}
 .my-product-container h1 {
-  font-size: 23px;
+  font-size: 18px;
   color: rgb(1, 255, 191);
 }

@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 
 type Props = {
-  left: number;
-  top: number;
   title: string;
   link: string;
   text: string;
@@ -16,8 +14,8 @@ type Props = {
 
 function Card({ textSize, title, link, text, btnText, titleColor, img, btnColor }: Props) {
   return (
-    <div className="card" style={{ overflowY: 'auto', alignItems: "center", maxWidth: "45vw"}}>
-      <img style={{ height: "45vw"}} src={img} className="card-img-top" alt="img"></img>
+    <div className="card" style={{ overflowY: 'auto', maxWidth: "20vw", justifyContent: "center"}}>
+      <img style={{ height: "20vw", width: "20vw"}} src={img} className="card-img-top" alt="img"></img>
       <div style={{ backgroundColor: 'black'}} className="card-body">
         <h5 style={{ color: titleColor }} className="card-title">{title}</h5>
         <p style={{ fontSize: `${textSize}px` }} className="card-text">{text}</p>

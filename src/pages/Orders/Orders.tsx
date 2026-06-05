@@ -29,7 +29,7 @@ useEffect(() => {
   };
 
   fetchPedidos();
-}, []);
+}, [apiUrl]);
     useEffect(() => {
       fetch(`${apiUrl}/auth/me`, {
           credentials: 'include'
@@ -40,10 +40,10 @@ useEffect(() => {
         })
         .then((data) => {setAuth(true); setUsername(data.username)})
         .catch(() => setAuth(false))
-    }, []);
+    }, [apiUrl]);
   
     if (auth === null) {
-      return <div className='app-container' style={{ backgroundColor: 'black', color: "blue" }}>
+      return <div className='app-container' style={{ color: "blue", fontSize: "28px" }}>
           Cargando...
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden"></span>
@@ -79,7 +79,7 @@ useEffect(() => {
   return (
     <div className='app-container'>
       <NavBar selected='pedidos'/>
-      <MyOrders  action2={cancel} action={claim} orders={pedidos}/>
+      <MyOrders action2={cancel} action={claim} orders={pedidos}/>
     </div>
     
   )

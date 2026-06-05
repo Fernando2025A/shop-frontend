@@ -3,6 +3,7 @@ button{
   border-radius: 8px;
   color: white;
   border: none;
+  cursor: pointer;
 }
 input{
   color: rgb(255, 250, 244);
@@ -12,14 +13,30 @@ input{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body{
-  background-size: cover;
+  --bg-app-image: url('../public/images/black.webp');
+
+  background-size: 140%;
   background-position: center;
   background-attachment: fixed;
 
+  background-repeat: no-repeat;
+  background-image: var(--bg-app-image);
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  background: linear-gradient(#000000, #0f0052);
+  animation: sutilMovimientoEspacial 60s linear infinite;
+  /* background: linear-gradient(#000000, #0f0052); */
+}
+@keyframes sutilMovimientoEspacial {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%; /* Se desplaza sutilmente hacia el lado */
+  }
+  100% {
+    background-position: 0% 50%; /* Vuelve suavemente al inicio */
+  }
 }
 p{
   color: rgb(255, 250, 244);

@@ -93,7 +93,8 @@ function Home() {
       >
         Explora todas las opciones que tenemos para tí😎
       </p>
-      <Card
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginRight: "25px" }}>
+        <Card
         textSize={16}
         btnColor="rgb(69, 24, 128)"
         img={profile}
@@ -102,8 +103,7 @@ function Home() {
         text="Vea las opciones disponibles en su perfil"
         link="profile"
         title={"Perfil"}
-        top={35}
-        left={10}
+  
       ></Card>
       <Card
         textSize={16}
@@ -114,8 +114,6 @@ function Home() {
         text="Vea lo que tenemos disponible en la tienda"
         link="store"
         title={"Tienda"}
-        top={35}
-        left={40}
       ></Card>
       <Card
         textSize={16}
@@ -126,9 +124,10 @@ function Home() {
         text="Vea información sobre sus pedidos"
         link="orders"
         title={"Pedidos"}
-        top={35}
-        left={70}
+    
       ></Card>
+      </div>
+      
       <footer className='footer-container'>
         
       </footer>

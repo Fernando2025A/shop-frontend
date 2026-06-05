@@ -129,7 +129,7 @@ function Cart() {
       <NavBar selected="carrito" />
       <div>
         <div
-          style={{ position: "fixed", display: display, marginLeft: "35%" }}
+          style={{ position: "fixed", display: display, justifyContent: "center", backgroundColor: "brown", color: "pink", border: "none" }}
           className={`alert alert-${alertState}`}
           role="alert"
         >
@@ -141,6 +141,7 @@ function Cart() {
             style={{
               display: "flex",
               justifyContent: "space-between",
+              backgroundColor: "rgba(0, 0, 0, 0.69)",
               alignItems: "center",
               marginBottom: "20px",
               border: "1px solid #ccc",
@@ -153,17 +154,17 @@ function Cart() {
 
               <p>Precio: ${Number(item.product.price).toLocaleString()}</p>
               <p>Cantidad: {item.quantity}</p>
-              <p>
+              <p style={{ color: "bisque"}}>
                 Total: $
                 {Number(item.quantity * item.product.price).toLocaleString()}
               </p>
               <button
                 onClick={() => deleteItem(item.productId)}
-                style={{ backgroundColor: "red" }}
+                style={{ background: "linear-gradient(135deg, #f72f2f, #4d0000)", borderRadius: "8px", marginRight: "20px" }}
               >
                 {btnText}
               </button>
-              <button>Detalles</button>
+              <button style={{ borderRadius: "8px", background: "linear-gradient(135deg, #4700ec, #070707)" }}>Detalles</button>
             </div>
 
             {/* Imagen */}
@@ -179,7 +180,9 @@ function Cart() {
           </div>
         ))}
       </div>
-      <p>
+      <p
+      style={{ background: "linear-gradient(90deg, #000000, #5a3dff)", textAlign: "center", borderColor: "blue", color: "bisque"}}
+      >
         Total del pedido: $
         {Number(
           cart.reduce(
@@ -189,14 +192,14 @@ function Cart() {
         ).toLocaleString()
         }
       </p>
-
+<div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
       <button
         disabled={cart.length < 1 ? true : false}
         style={{
-          backgroundColor: "blue",
-          marginLeft: "40%",
+          background: "linear-gradient(135deg, #2f9df7, #07002c)",
           color: "white",
           border: "none",
+          borderRadius: "8px",
           padding: "10px 20px",
           cursor: "pointer",
           opacity: opacity,
@@ -205,6 +208,7 @@ function Cart() {
       >
         {checkoutText}
       </button>
+      </div>
     </div>
   );
 }

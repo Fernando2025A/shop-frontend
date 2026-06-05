@@ -1,13 +1,23 @@
-import { useEffect, useState } from 'react';
-import NavBar from '../../components/NavBar'
-import { Navigate } from 'react-router-dom';
-import MyInventory from '../../components/MyInventory';
-import CardMyProduct from '../../components/CardMyProduct/CardMyProduct';
+import { useEffect, useState } from "react";
+import NavBar from "../../components/NavBar";
+import { Navigate } from "react-router-dom";
+import CardMyProduct from "../../components/CardMyProduct/CardMyProduct";
 type Product = {
-    userId: number;
-    productId: number;
-    quantity: number;
-    obtainedAt: string;
+  userId: number;
+  productId: number;
+  quantity: number;
+  obtainedAt: string;
+  product: ProductDetails;
+};
+type ProductDetails = {
+  name: string;
+  price: string; //se convierte a number
+  stock: number;
+  requiredLevel: number;
+  categoryId: number;
+  description: string;
+  image: string;
+  productType: string;
 };
 
 function Inventory() {
@@ -15,52 +25,72 @@ function Inventory() {
   const [auth, setAuth] = useState(null);
   const [username, setUsername] = useState("");
   const [product, setProduct] = useState<Product[]>([]);
+  const [avatar, setAvatar] = useState("");
 
-    useEffect(() => {
-      const fetchInventory = async () => {
-        const res = await fetch(`${apiUrl}/inventory`, {
-          credentials: "include",
-        });
-        const data: Product[] = await res.json();
-        setProduct(data);
-      };
-  
-      fetchInventory();
-    }, []);
-  
-    useEffect(() => {
-      fetch(`${apiUrl}/auth/me`, {
-          credentials: 'include'
-        })
-        .then(res => {
-          if (!res.ok) throw new Error('No autorizado')
-          return res.json();
-        })
-        .then((data) => {setAuth(true); setUsername(data.username)})
-        .catch(() => setAuth(false))
-    }, []);
-  
-    if (auth === null) {
-      return <div className='app-container' style={{ backgroundColor: 'black', color: "blue" }}>
-          Cargando...
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden"></span>
-          </div>
+  useEffect(() => {
+    const fetchInventory = async () => {
+      const res = await fetch(`${apiUrl}/inventory`, {
+        credentials: "include",
+      });
+      const data: Product[] = await res.json();
+      setProduct(data);
+    };
+
+    fetchInventory();
+  }, []);
+
+  useEffect(() => {
+    fetch(`${apiUrl}/auth/me`, {
+      credentials: "include",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("No autorizado");
+        return res.json();
+      })
+      .then((data) => {
+        setAuth(true);
+        setUsername(data.username);
+        setAvatar(data.data.avatar)
+      })
+      .catch(() => setAuth(false));
+  }, []);
+
+  if (auth === null) {
+    return (
+      <div
+        className="app-container"
+        style={{ backgroundColor: "black", color: "blue" }}
+      >
+        Cargando...
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden"></span>
         </div>
+      </div>
+    );
+  }
+  if (auth === false) {
+    return <Navigate to="/login"></Navigate>;
+  }
+
+  const useProduct = async (productId: number) => {
+    const res = await fetch(`${apiUrl}/products/${productId}/use`, {
+      credentials: "include",
+    });
+    if (!res.ok) {
+      return;
     }
-    if (auth === false) {
-      return <Navigate to='/login'></Navigate> ;
+    else {
+      const resObject = await res.json();
+      setAvatar(resObject.avatar);
+      return;
     }
+  };
   return (
-  
-    <div className='-container'>
-      <NavBar selected='INVENTARIO'/>
-      {/* <MyInventory products={product}></MyInventory> */}
-      <CardMyProduct productName='Fondo galaxia'></CardMyProduct>
-      <CardMyProduct productName='Fondo galaxia'></CardMyProduct>
-      <CardMyProduct productName='Fondo galaxia'></CardMyProduct>
+    <div className="app-container">
+      <NavBar selected="INVENTARIO" />
+      <CardMyProduct avatar={avatar} action={useProduct} products={product}></CardMyProduct>
     </div>
-  )
+  );
 }
 
-export default Inventory
+export default Inventory;
