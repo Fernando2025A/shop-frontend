@@ -1,0 +1,141 @@
+.money-generator-container {
+  background-color: #0d0e12;
+  border: 1px solid #1a1c23;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 850px; /* Ajustado para que sea ancho como en tu captura */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: 'Inter', system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Encabezado del contenedor */
+.money-generator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-title-zone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-zap-icon {
+  color: #a855f7; /* Tono morado eléctrico */
+}
+
+.header-title-zone h2 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Botón de mejorar superior derecho */
+.generator-upgrade-btn {
+  background-color: #581c87;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.generator-upgrade-btn:hover {
+  background-color: #6b21a8;
+}
+
+/* Línea divisoria horizontal sutil */
+.money-generator-divider {
+  height: 1px;
+  background-color: #1a1c23;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+/* Cuerpo del componente */
+.money-generator-body {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (max-width: 650px) {
+  .money-generator-body {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+/* Caja de la izquierda donde se aloja el render */
+.generator-visual-box {
+  flex: 1;
+  max-width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generator-cube-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.2)); /* Sutil aura morada trasera */
+}
+
+/* Lista de filas estadísticas (Derecha) */
+.generator-stats-list {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #14151b;
+}
+
+.stat-row:last-child {
+  border-bottom: none; /* Quita la línea a la última fila */
+}
+
+.stat-label-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #9ca3af; /* Color gris de las etiquetas en tu UI */
+  font-size: 1rem;
+}
+
+.stat-icon {
+  color: #4b5563; /* Iconos en un tono más neutro/apagado */
+}
+
+.stat-value {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Variaciones de color exactas de tu captura */
+.text-purple {
+  color: #a855f7;
+}
+
+.text-green {
+  color: #22c55e;
+}

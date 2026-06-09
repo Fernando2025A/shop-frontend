@@ -1,0 +1,323 @@
+/* --- Variables de Color (Paleta UI Oscura) --- */
+:root {
+  --bg-main: #0b0c16;
+  --bg-card: #121324;
+  --bg-input: #1a1b30;
+  --text-main: #ffffff;
+  --text-muted: #737691;
+  
+  --accent-purple: #8257e5;
+  --accent-green: #10b981;
+  --accent-yellow: #f59e0b;
+  --accent-red: #ef4444;
+  
+  --border-color: #21233d;
+}
+
+/* --- Contenedor General --- */
+.dashboard-container {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* --- Encabezado --- */
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  margin: 0 0 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashboard-header p {
+  color: var(--text-muted);
+  margin: 0 0 2rem 0;
+  font-size: 0.95rem;
+}
+
+/* --- Grid de Métricas --- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metric-title {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.metric-subtext {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.metric-subtext.link {
+  color: var(--accent-purple);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Iconos de las Métricas */
+.metric-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.icon-all { background-color: rgba(130, 87, 229, 0.1); color: var(--accent-purple); }
+.icon-claimed { background-color: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+.icon-pending { background-color: rgba(245, 158, 11, 0.1); color: var(--accent-yellow); }
+.icon-canceled { background-color: rgba(239, 68, 68, 0.1); color: var(--accent-red); }
+.icon-total { background-color: rgba(130, 87, 229, 0.15); color: var(--accent-purple); }
+
+/* --- Barra de Filtros --- */
+.filters-bar {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-wrapper input {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.6rem 0.6rem 0.6rem 2.2rem;
+  color: white;
+}
+
+.icon-search {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.date-inputs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.date-field, .select-wrapper select {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.6rem;
+  color: white;
+  color-scheme: dark; /* Adapta el calendario nativo a modo oscuro */
+}
+
+.btn-clear-filters {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background 0.2s;
+}
+
+.btn-clear-filters:hover {
+  background-color: var(--bg-input);
+}
+
+/* --- Tabla de Pedidos --- */
+.table-responsive {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.pedidos-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.pedidos-table th {
+  color: var(--accent-purple);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pedidos-table td {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.text-muted {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+/* IDs y Detalles */
+.col-id {
+  font-weight: bold;
+}
+.id-text {
+  display: block;
+  color: var(--accent-purple);
+}
+.view-detail {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+.view-detail:hover {
+  text-decoration: underline;
+}
+
+/* Miniaturas de Productos */
+.product-thumbnails {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.prod-thumb {
+  width: 36px;
+  height: 36px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-products {
+  font-size: 0.75rem;
+  color: var(--accent-purple);
+  background-color: rgba(130, 87, 229, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* Precios */
+.total-amount {
+  font-weight: 600;
+}
+.payment-status {
+  font-size: 0.75rem;
+  color: var(--accent-purple);
+}
+
+/* Badges de Estados */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.status-badge.reclamado {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--accent-green);
+}
+
+.status-badge.pendiente {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--accent-yellow);
+}
+
+.status-badge.cancelado {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--accent-red);
+}
+
+.status-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Botones de Acción */
+.actions-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-action {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.btn-action:hover {
+  opacity: 0.8;
+}
+
+.btn-claim {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 100%;
+  text-align: center;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-danger {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--accent-red);
+  border: 1px solid var(--accent-red);
+}

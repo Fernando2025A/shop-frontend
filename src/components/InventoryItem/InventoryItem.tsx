@@ -1,6 +1,7 @@
-import "./CardMyProduct.css";
+import "./InventoryItem.css";
 type Props = {
   avatar: string;
+  background: string;
   products: Product[];
   action: (productId: number) => void;
 };
@@ -21,7 +22,7 @@ type ProductDetails = {
   image: string;
   productType: string;
 };
-function CardMyProduct({ products, action, avatar }: Props) {
+function InventoryItem({ products, action, avatar, background }: Props) {
   return products.map((o) => (
     // Eliminamos el div interno. Ahora la <img> y el .card-content son hijos directos de .product-card
     <div className="product-card" key={o.productId}>
@@ -41,15 +42,15 @@ function CardMyProduct({ products, action, avatar }: Props) {
         <button
           className="btn-use"
           disabled={
-            o.product.productType === "EFFECT" || o.product.image === avatar
+            o.product.productType === "EFFECT" || o.product.image === avatar || o.product.image === background
           }
           onClick={() => action(o.productId)}
         >
           {o.product.productType === "EFFECT"
             ? "Activo"
-            : o.product.image === avatar
+            : o.product.image === avatar || o.product.image === background
               ? "Equipado"
-              : o.product.productType === "COSMETIC" ? "Equipar" : "Usar"}
+              : o.product.productType === "COSMETIC" ? "Equipar" : "Usar" }
         </button>
         <button
           style={{
@@ -64,4 +65,4 @@ function CardMyProduct({ products, action, avatar }: Props) {
   ));
 }
 
-export default CardMyProduct;
+export default InventoryItem;

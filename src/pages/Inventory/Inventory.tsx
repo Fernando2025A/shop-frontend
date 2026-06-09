@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar";
-import { Navigate } from "react-router-dom";
-import CardMyProduct from "../../components/CardMyProduct/CardMyProduct";
+import { useAuth } from "../../context/AuthContext";
+import { useTheme } from "../../components/ThemeProvider";
+import InventoryItem from "../../components/InventoryItem/InventoryItem";
 type Product = {
   userId: number;
   productId: number;
@@ -22,8 +23,8 @@ type ProductDetails = {
 
 function Inventory() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const [auth, setAuth] = useState(null);
-  const [username, setUsername] = useState("");
+  const { user } = useAuth();
+  const { currentBackground, changeBackground } = useTheme();
   const [product, setProduct] = useState<Product[]>([]);
   const [avatar, setAvatar] = useState("");
 
@@ -37,58 +38,40 @@ function Inventory() {
     };
 
     fetchInventory();
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/auth/me`, {
-      credentials: "include",
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("No autorizado");
-        return res.json();
-      })
-      .then((data) => {
-        setAuth(true);
-        setUsername(data.username);
-        setAvatar(data.data.avatar)
-      })
-      .catch(() => setAuth(false));
-  }, []);
-
-  if (auth === null) {
-    return (
-      <div
-        className="app-container"
-        style={{ backgroundColor: "black", color: "blue" }}
-      >
-        Cargando...
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden"></span>
-        </div>
-      </div>
-    );
-  }
-  if (auth === false) {
-    return <Navigate to="/login"></Navigate>;
-  }
+    if (!user) return;
+    if (user.background) {
+      changeBackground(user.background);
+    }
+  }, [user, changeBackground]);
 
   const useProduct = async (productId: number) => {
-    const res = await fetch(`${apiUrl}/products/${productId}/use`, {
-      credentials: "include",
-    });
-    if (!res.ok) {
-      return;
-    }
-    else {
+    try {
+      const res = await fetch(`${apiUrl}/products/${productId}/use`, {
+        credentials: "include",
+      });
+      if (!res.ok) {
+        return;
+      }
+
       const resObject = await res.json();
-      setAvatar(resObject.avatar);
-      return;
+      if (resObject.background) {
+        changeBackground(resObject.background);
+      }
+      if (resObject.avatar) {
+        setAvatar(resObject.avatar);
+      }
+    } catch (error) {
+      console.error("Error al usar producto:", error);
     }
   };
+
   return (
     <div className="app-container">
       <NavBar selected="INVENTARIO" />
-      <CardMyProduct avatar={avatar} action={useProduct} products={product}></CardMyProduct>
+      <InventoryItem background={currentBackground} avatar={avatar} action={useProduct} products={product} />
     </div>
   );
 }

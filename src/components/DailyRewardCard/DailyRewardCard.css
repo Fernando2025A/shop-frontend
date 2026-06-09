@@ -1,0 +1,96 @@
+.daily-reward-card {
+  background-color: #0d0e12; /* Fondo oscuro base */
+  border: 1px solid #1a1c23; /* Borde sutil de la tarjeta */
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.daily-reward-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.daily-reward-icon-wrapper {
+  color: #6366f1; /* Morado/Índigo del icono */
+  background-color: rgba(99, 102, 241, 0.1); /* Destello sutil de fondo */
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.daily-reward-info h3 {
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.daily-reward-info p {
+  color: #9ca3af; /* Gris secundario para descripción */
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.daily-reward-amount {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.amount-highlight {
+  color: #22c55e; /* Verde brillante exacto para el dinero */
+  font-weight: 600;
+}
+
+.daily-reward-btn {
+  background-color: #581c87; /* Violeta base del botón */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.daily-reward-btn:hover:not(:disabled) {
+  background-color: #6b21a8; /* Un toque más claro al pasar el cursor */
+}
+
+.daily-reward-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.daily-reward-btn:disabled.claimed {
+  background-color: #2e104e; /* Tono apagado cuando ya fue reclamado */
+  color: #a78bfa;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.daily-reward-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}

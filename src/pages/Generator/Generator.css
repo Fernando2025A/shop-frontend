@@ -1,0 +1,57 @@
+.generator-container {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(24, 24, 24);
+
+  border-radius: 12px;
+  padding: 10px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: 'Segoe UI', sans-serif;
+  gap: 20px;
+}
+.generator-container p{
+  color: rgb(62, 226, 255);
+}
+.generator-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* Contenedor que junta las dos columnas */
+.game-layout {
+  display: flex;
+  gap: 24px; /* Espaciado entre la columna izquierda y la derecha */
+  padding: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  align-items: flex-start; /* Evita que los componentes se estiren raro verticalmente */
+}
+
+/* Columna izquierda: se apila verticalmente */
+.layout-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaciado entre el diario y el estado del generador */
+  flex: 1;   /* Toma un espacio proporcional */
+  max-width: 380px; /* Mantiene el ancho ideal de tus tarjetas izquierdas */
+}
+
+/* Columna derecha: contiene el generador grande */
+.layout-right-column {
+  flex: 2; /* Toma más espacio horizontal que la columna izquierda */
+  width: 100%;
+}
+
+/* 📱 Opcional: Hace que en celulares todo se vuelva a poner uno abajo del otro */
+@media (max-width: 900px) {
+  .game-layout {
+    flex-direction: column;
+  }
+  .layout-left-column {
+    max-width: 100%;
+  }
+}

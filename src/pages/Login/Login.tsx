@@ -52,7 +52,7 @@ function Login() {
         credentials: "include",
       });
 
-      if (response.status == 500) {
+      if (!response.ok) {
         active();
         throw new Error("Falló al iniciar sesión");
       }

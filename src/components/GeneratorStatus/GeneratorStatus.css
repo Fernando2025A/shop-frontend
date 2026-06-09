@@ -1,0 +1,169 @@
+.generator-status-card {
+  background-color: #0d0e12;
+  border: 1px solid #1a1c23;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: 'Inter', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Sección del título */
+.generator-status-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-icon {
+  color: #6366f1; /* Morado del icono */
+}
+
+.generator-status-title h2 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* Distribución interna central */
+.generator-status-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Estilos del Círculo de Progreso */
+.radial-progress-container {
+  position: relative;
+  width: 125px;
+  height: 125px;
+}
+
+.radial-progress-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #161822; /* Fondo de la pista del círculo */
+  stroke-width: 10;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: #7c3aed; /* Color morado neón principal */
+  stroke-width: 10;
+  stroke-linecap: round; /* Bordes redondeados en la punta del círculo */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.radial-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.percentage-number {
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.percentage-label {
+  color: #a78bfa; /* Morado claro */
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Métricas de la derecha */
+.generator-data-metrics {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+}
+
+.metric-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-group.border-top {
+  border-top: 1px solid #1a1c23;
+  padding-top: 12px;
+}
+
+.metric-label {
+  color: #6b7280; /* Gris apagado para labels */
+  font-size: 0.85rem;
+}
+
+.metric-value {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Badge de bonus verde (+5%) */
+.bonus-badge {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Sección inferior timeline */
+.generator-footer-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.time-countdown {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Barra horizontal de progreso */
+.progress-linear-bg {
+  background-color: #161822;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-linear-fill {
+  background-color: #7c3aed; /* Morado uniforme de barra */
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}

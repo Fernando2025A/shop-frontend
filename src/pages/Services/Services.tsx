@@ -1,6 +1,6 @@
-import { Navigate } from "react-router-dom";
 import NavBar from "../../components/NavBar";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import gold from "../../assets/gold.png";
 import silver from "../../assets/silver.png";
 import bronze from "../../assets/bronze.png";
@@ -13,8 +13,7 @@ type Benefits = {
 };
 function Services() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const [auth, setAuth] = useState(null);
-  const [username, setUsername] = useState("");
+  const { user } = useAuth();
   const [img, setImg] = useState("");
   const [active, setActive] = useState(false);
   const [display, setDisplay] = useState("none");
@@ -27,29 +26,27 @@ function Services() {
   const [planId, setPlanId] = useState(0);
   const [id, setId] = useState(1);
   const [admin, setAdmin] = useState(false);
+  const [expiration, setExpiration] = useState("");
   const [benefits, setBenefits] = useState<Benefits[]>([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/auth/me`, {
+    if (!user) return;
+    setPlanId(user.subscription?.plan.id ?? user.planId ?? 0);
+    setAdmin(user.roleId !== 1);
+  }, [user]);
+
+  useEffect(() => {
+      fetch(`${apiUrl}/plan/me`, {
       credentials: "include",
     })
       .then((res) => {
-        if (!res.ok) throw new Error("No autorizado");
         return res.json();
       })
       .then((data) => {
-        setPlanId(data.data.planId);
-        setAuth(true);
-        setUsername(data.username);
-        if (data.data.roleId === 1) {
-          setAdmin(false);
-        } else {
-          setAdmin(true);
-        }
+        const dateExp = new Date(data.currentPeriodEnd);
+        setExpiration(dateExp.toLocaleString());
       })
-      .catch(() => setAuth(false));
-  }, [apiUrl]);
-
+  }, [apiUrl])
   useEffect(() => {
     if (!planId) return;
     fetch(`${apiUrl}/plan`, {
@@ -83,22 +80,6 @@ function Services() {
       });
   }, [apiUrl, planId]);
 
-  if (auth === null) {
-    return (
-      <div
-        className="app-container"
-        style={{ backgroundColor: "black", color: "blue" }}
-      >
-        Cargando...
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden"></span>
-        </div>
-      </div>
-    );
-  }
-  if (auth === false) {
-    return <Navigate to="/login"></Navigate>;
-  }
 
   function setCard(img: string) {
     setImg(img);
@@ -139,14 +120,12 @@ function Services() {
   return (
     <div className="app-container">
       <NavBar selected="SERVICIOS" />
-      <CardInfo
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <CardInfo
         textColor="blueviolet"
         priceText={`Precio: $${Number(price).toString()}/mes`}
         text="Obtener este plan"
-        left="39.5"
-        top="5"
         display={display}
-
         img={img}
       />
       <button
@@ -185,6 +164,10 @@ function Services() {
       >
         Cancelar
       </button>
+      </div>
+
+    
+      
 
       <CardPlan
         isAdmin={admin}
@@ -202,16 +185,17 @@ function Services() {
         textColor="rgb(168, 150, 48)"
         text={[
           `✔️${benefits[2]?.discount * 100}% de descuento en todos los productos`,
-
           `✔️Entrega de productos ${benefits[2]?.shippingSpeed * 100}% más rápida`,
+          "✔️+5% de producción por hora",
+          "✔️Acceso a mercado exclusivo",
+          "✔️+$50 diarios",
+          `✔️Acceso a todos los productos`
 
-          "✔️Acceso a características avanzadas",
         ]}
         titleColor="yellow"
         title={`Gold ${plan.toLocaleLowerCase() === "gold" ? "(actual)" : ""}`}
-        // top={30}
-        // left={10}
         img={gold}
+        vence={`${plan.toLocaleLowerCase() === "gold" ? `Vence: ${expiration}` : ""}`}
       />
 
       <CardPlan
@@ -231,11 +215,14 @@ function Services() {
         text={[
           `✔️${benefits[1]?.discount * 100}% de descuento en todos los productos`,
           `✔️Entrega de productos ${benefits[1]?.shippingSpeed * 100}% más rápida`,
-          "✔️Acceso a características avanzadas",
+          "✔️+3% de producción por hora",
+          "✔️+$35 diarios",
+          "✔️Acceso a productos de hasta nivel 3",
         ]}
         titleColor="rgb(168, 168, 168)"
         title={`Silver ${plan.toLocaleLowerCase() === "silver" ? "(actual)" : ""}`}
         img={silver}
+        vence={`${plan.toLocaleLowerCase() === "silver" ? `Vence: ${expiration}` : ""}`}
       />
 
       <CardPlan
@@ -255,10 +242,14 @@ function Services() {
         text={[
           `✔️${benefits[0]?.discount * 100}% de descuento en todos los productos`,
           `✔️Entrega de productos ${benefits[0]?.shippingSpeed * 100}% más rápida`,
+          "✔️+1% de producción por hora",
+          "✔️+$20 diarios",
+          "✔️Acceso a productos de hasta nivel 2"
         ]}
         titleColor="rgb(182, 123, 68)"
-        title={`Bronze ${plan.toLocaleLowerCase() === "bronze" ? "(Plan actual)" : ""}`}
+        title={`Bronze ${plan.toLocaleLowerCase() === "bronze" ? "(actual)" : ""}`}
         img={bronze}
+        vence={`${plan.toLocaleLowerCase() === "bronze" ? `Vence: ${expiration}` : ""}`}
       />
     </div>
   );

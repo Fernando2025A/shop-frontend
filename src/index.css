@@ -25,7 +25,6 @@ body{
   min-height: 100vh;
   margin: 0;
   animation: sutilMovimientoEspacial 60s linear infinite;
-  /* background: linear-gradient(#000000, #0f0052); */
 }
 @keyframes sutilMovimientoEspacial {
   0% {

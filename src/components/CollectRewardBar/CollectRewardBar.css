@@ -1,0 +1,110 @@
+.collect-bar-container {
+  background-color: #0b1111; /* Fondo ultra oscuro con un sutil matiz verde esmeralda */
+  border: 1px solid rgba(34, 197, 94, 0.1); /* Borde verde muy sutil */
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Zona izquierda del componente */
+.collect-bar-info-zone {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Cuadrado del icono del dólar */
+.collect-badge-icon {
+  background-color: rgba(34, 197, 94, 0.1); /* Fondo verde traslúcido */
+  color: #22c55e; /* Verde brillante */
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 10px rgba(34, 197, 94, 0.05);
+}
+
+.collect-badge-icon.disabled {
+  background-color: rgba(75, 85, 99, 0.1);
+  color: #4b5563;
+}
+
+/* Grupo de textos */
+.collect-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.collect-label {
+  color: #9ca3af; /* Gris secundario para la descripción */
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.collect-amount {
+  color: #22c55e; /* Verde brillante exacto */
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(34, 197, 94, 0.2); /* Sutil resplandor de neón verde */
+}
+
+/* Botón "Recolectar" (Derecha) */
+.collect-action-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a); /* Degradado verde premium */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  transition: transform 0.1s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.collect-action-btn:hover:not(:disabled) {
+  filter: brightness(1.1); /* Brilla un poco más al hacer hover */
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4);
+}
+
+.collect-action-btn:active:not(:disabled) {
+  transform: scale(0.98); /* Efecto de clic físico */
+}
+
+/* Estado deshabilitado si no hay dinero que recolectar */
+.collect-action-btn:disabled {
+  background: #1f2937;
+  color: #4b5563;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Adaptación responsive para pantallas pequeñas */
+@media (max-width: 550px) {
+  .collect-bar-container {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+    text-align: center;
+  }
+  .collect-bar-info-zone {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .collect-action-btn {
+    justify-content: center;
+  }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../App.css";
-import { Navigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import NavBar from "../../components/NavBar";
 import Head from "../../components/Head";
 import Card from "../../components/Card/Card";
@@ -9,59 +9,26 @@ import store from "../../assets/store.png";
 import order from "../../assets/order.png";
 import Balance from "../../components/Balance/Balance";
 
-//type Props = {}
-
 function Home() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const [auth, setAuth] = useState(null);
-  const [username, setUsername] = useState("");
+  const { user } = useAuth();
   const [amount, setAmount] = useState(0);
-  const [admin, setAdmin] = useState(false);
   const [options, setOptions] = useState(false);
   const [btnText, setBtnText] = useState("+");
   const [newAmount, setNewAmount] = useState(0);
 
   useEffect(() => {
-    fetch(`${apiUrl}/auth/me`, {
-      credentials: "include",
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("No autorizado");
-        return res.json();
-      })
-      .then((data) => {
-        setAuth(true);
-        setAmount(data.data.amount);
-        setUsername(data.data.username);
-        if (data.data.roleId === 1) {
-          setAdmin(false);
-        } else {
-          setAdmin(true);
-        }
-      })
-      .catch(() => setAuth(false));
-  }, []);
+    if (user?.amount !== undefined) {
+      setAmount(user.amount);
+    }
+  }, [user]);
 
-  if (auth === null) {
-    return (
-      <div
-        className="app-container"
-        style={{ backgroundColor: "black", color: "blue" }}
-      >
-        Cargando...
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden"></span>
-        </div>
-      </div>
-    );
-  }
-  if (auth === false) {
-    return <Navigate to="/login"></Navigate>;
-  }
+  const username = user?.username ?? "";
+  const admin = user?.roleId !== 1;
 
   const saldo: number = amount;
 
-    const setAmountMe = async () => {
+  const setAmountMe = async () => {
       try {
         await fetch(`${apiUrl}/admin/amount`, {
           method: "PATCH",

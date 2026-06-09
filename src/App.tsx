@@ -7,29 +7,29 @@ import Profile from "./pages/Profile/Profile";
 import Store from "./pages/Store/Store";
 import Services from "./pages/Services/Services";
 import Orders from "./pages/Orders/Orders";
-import Cart from "./pages/Cart/Cart";
 import Inventory from "./pages/Inventory/Inventory";
-import Tasks from "./pages/Tasks/Tasks";
+import Tasks from "./pages/Generator/Generator";
 import Social from "./pages/Social/Social";
-import { ThemeProvider } from "./components/ThemeContext";
+import { CartPage } from "./components/CartPage/CartPage";
+import { RequireAuth } from "./context/AuthContext";
 
 function App() {
   return (
-    <ThemeProvider>
-      <Routes>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/home/profile" element={<Profile />}></Route>
-        <Route path="/home/store" element={<Store />}></Route>
-        <Route path="/home/inventory" element={<Inventory />}></Route>
-        <Route path="/home/services" element={<Services />}></Route>
-        <Route path="/home/orders" element={<Orders />}></Route>
-        <Route path="/home/cart" element={<Cart />}></Route>
+    <Routes>
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+      <Route element={<RequireAuth />}>
+        <Route path="/home/profile" element={<Profile />} />
+        <Route path="/home/store" element={<Store />} />
+        <Route path="/home/inventory" element={<Inventory />} />
+        <Route path="/home/services" element={<Services />} />
+        <Route path="/home/orders" element={<Orders />} />
+        <Route path="/home/cart" element={<CartPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/home/tasks" element={<Tasks />}></Route>
-        <Route path="/home/social" element={<Social />}></Route>
-      </Routes>
-    </ThemeProvider>
+        <Route path="/home/rewards" element={<Tasks />} />
+        <Route path="/home/social" element={<Social />} />
+      </Route>
+    </Routes>
   );
 }
 

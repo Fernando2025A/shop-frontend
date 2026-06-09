@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar";
-import { Navigate } from "react-router-dom";
 import ProfileDashboard from "../../components/ProfileDashboard/ProfileDashboard";
+import { useAuth } from "../../context/AuthContext";
 
 function Profile() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const [auth, setAuth] = useState(null);
+  const { user, refreshUser } = useAuth();
   const [username, setUsername] = useState("");
-  const [id, setId] = useState();
+  const [id, setId] = useState<number | undefined>(undefined);
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [email, setEmail] = useState("");
@@ -34,44 +34,17 @@ function Profile() {
       }
     };
     getPlan();
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/auth/me`, {
-      credentials: "include",
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("No autorizado");
-        return res.json();
-      })
-      .then((data) => {
-        setEmail(data.data.email);
-        setAuth(true);
-        setUsername(data.data.username);
-        setAmount(data.data.amount);
-        setId(data.data.id);
-        setAvatar(data.data.avatar);
-        setPlan(data.data.planId);
-      })
-      .catch(() => setAuth(false));
-  }, []);
-
-  if (auth === null) {
-    return (
-      <div
-        className="app-container"
-        style={{ backgroundColor: "black", color: "blue" }}
-      >
-        Cargando...
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden"></span>
-        </div>
-      </div>
-    );
-  }
-  if (auth === false) {
-    return <Navigate to="/login"></Navigate>;
-  }
+    if (!user) return;
+    setEmail(user.email ?? "");
+    setUsername(user.username ?? "");
+    setAmount(user.amount ?? 0);
+    setId(user.id as number | undefined);
+    setAvatar(user.avatar ?? "");
+    setPlan(user.planId ?? user.subscription?.plan?.id ?? 0);
+  }, [user]);
 
   const logout = async () => {
     await fetch(`${apiUrl}/auth/logout`, {

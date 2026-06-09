@@ -1,0 +1,142 @@
+.upgrades-section-container {
+  width: 100%;
+  max-width: 850px;
+  font-family: 'Inter', system-ui, sans-serif;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+/* Título de la fila */
+.upgrades-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.upgrades-title-icon {
+  color: #a855f7; /* Tono morado del icono de la flecha */
+}
+
+.upgrades-section-title h2 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Grid de las 4 columnas flexibles */
+.upgrades-cards-grid {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .upgrades-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 en pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .upgrades-cards-grid {
+    grid-template-columns: 1fr; /* 1 columna en celulares */
+  }
+}
+
+/* Tarjeta individual */
+.upgrade-item-card {
+  background-color: #0d0e12;
+  border: 1px solid #1a1c23;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Apilado vertical interno */
+  min-height: 210px; /* Asegura un tamaño consistente uniforme */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Cabecera interna de la tarjeta */
+.upgrade-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.upgrade-icon-box {
+  color: #a855f7; /* Color de icono por defecto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgrade-card-header h3 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Cuerpo de textos */
+.upgrade-card-description {
+  color: #6b7280; /* Gris apagado para descripciones */
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+}
+
+.upgrade-card-level {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* Botón de comprar con distribución interna flex */
+.upgrade-buy-button {
+  background-color: #1a1528; /* Morado muy oscuro de fondo */
+  border: 1px solid #2e1e4e;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* 🔥 MAGIA: Empuja el botón siempre al fondo de la tarjeta */
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.upgrade-buy-button:hover:not(:disabled) {
+  background-color: #251b3a;
+  border-color: #4c2c85;
+}
+
+.upgrade-buy-button:disabled {
+  background-color: #111318;
+  border-color: #1a1c23;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-action-text {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Control del color de precio según el saldo */
+.btn-cost-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.btn-cost-text.affordable {
+  color: #22c55e; /* Verde si le alcanza */
+}
+
+.btn-cost-text.expensive {
+  color: #ef4444; /* Rojo si le falta dinero */
+}

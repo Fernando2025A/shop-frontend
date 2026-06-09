@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar";
-import { Navigate } from "react-router-dom";
+
+type CartItem = {
+  id: number;
+  productId: number;
+  quantity: number;
+  product: {
+    name: string;
+    price: number;
+    image: string;
+  };
+};
 
 function Cart() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const [auth, setAuth] = useState(null);
-  const [username, setUsername] = useState("");
-  const [cart, setCart] = useState([]);
-  const [btnText, setBtnText] = useState("Eliminar");
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const btnText = "Eliminar";
   const [checkoutText, setCheckoutText] = useState("Realizar compra");
-  const [checkoutState, setCheckoutState] = useState(false);
   const [alertText, setAlertText] = useState("Pa");
   const [alertState, setAlertState] = useState("success");
   const [opacity, setOpacity] = useState("1");
@@ -26,42 +33,10 @@ function Cart() {
       .then((data) => {
         setCart(data.items);
       });
-  }, []);
-  useEffect(() => {
-    fetch(`${apiUrl}/auth/me`, {
-      credentials: "include",
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("No autorizado");
-        return res.json();
-      })
-      .then((data) => {
-        setAuth(true);
-        setUsername(data.username);
-      })
-      .catch(() => setAuth(false));
-  }, []);
-
-  if (auth === null) {
-    return (
-      <div
-        className="app-container"
-        style={{ backgroundColor: "black", color: "blue" }}
-      >
-        Cargando...
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden"></span>
-        </div>
-      </div>
-    );
-  }
-  if (auth === false) {
-    return <Navigate to="/login"></Navigate>;
-  }
+  }, [apiUrl]);
 
   const checkout = async () => {
     setCheckoutText("Cargando...");
-    setCheckoutState(true);
     setOpacity("0.5");
     const res = await fetch(`${apiUrl}/cart/checkout`, {
       method: "POST",
@@ -73,7 +48,6 @@ function Cart() {
     if (!res.ok) {
       const resObject = await res.json();
       setAlertText(`Error: ${resObject.message}`);
-      setCheckoutState(false);
       setCheckoutText("Realizar pago");
       setOpacity("1");
       setAlertState("danger");
@@ -84,7 +58,6 @@ function Cart() {
       return;
     }
     setOpacity("1");
-    setCheckoutState(false);
     setCheckoutText("Realizar pago");
     setAlertText("Pago procesado con éxito");
     setDisplay("flex");
@@ -160,11 +133,11 @@ function Cart() {
               </p>
               <button
                 onClick={() => deleteItem(item.productId)}
-                style={{ background: "linear-gradient(135deg, #f72f2f, #4d0000)", borderRadius: "8px", marginRight: "20px" }}
+                style={{ background: "linear-gradient(135deg, #f72f2f, #4d0000)", width: "150px", borderRadius: "8px", marginRight: "20px" }}
               >
                 {btnText}
               </button>
-              <button style={{ borderRadius: "8px", background: "linear-gradient(135deg, #4700ec, #070707)" }}>Detalles</button>
+              <button style={{ borderRadius: "8px", background: "linear-gradient(135deg, #4700ec, #070707)", width: "150px", }}>Detalles</button>
             </div>
 
             {/* Imagen */}

@@ -1,8 +1,9 @@
 .navbar {
   display: flex;
- align-items: center;
+  align-items: center;
+  justify-content: space-between; /* Distribuye Logo - Centro - Derecha */
   padding: 10px 20px;
-  background-color: #111; /* Color oscuro de tu temática */
+  background-color: #111; 
   color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -17,58 +18,70 @@
 }
 
 .nav-spacer img {
-  height: 30px; /* Controla el tamaño de tu logo */
+  height: 30px; 
   width: auto;
 }
 
 /* Grupos de enlaces (Centro y Derecha) */
 .nav-group {
   display: flex;
-  font-family: Arial, Helvetica, sans-serif;
-  gap: 30px; /* Espacio entre links */
+  gap: 24px; /* Bajado ligeramente de 30px a 24px para compensar el espacio del ícono */
 }
 
-.nav-group a {
+/* Reemplazamos '.nav-group a' por la nueva clase '.nav-link' */
+.nav-link {
   color: #c0c0c0;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Un pelín más compacto para balancear visualmente con el ícono */
   transition: color 0.2s;
-  font-family: Arial, Helvetica, cursive;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  
+  /* 🔥 AQUÍ ESTÁ EL TRUCO DE ALINEACIÓN: */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Distancia exacta entre el ícono y el texto */
 }
 
-.nav-group a:hover, 
-#select {
-  color: #8f53ff !important; /* Tu celeste característico para el activo */
+.nav-link:hover, 
+.nav-link.select {
+  color: #8f53ff !important; /* Tu morado característico activo */
 }
-
 
 /* ==========================================
    MEDIA QUERY PARA MÓVILES (Pantallas < 1080px)
    ========================================== */
 @media (max-width: 1080px) {
   .navbar {
-    flex-direction: column; /* Apila el contenido verticalmente */
+    flex-direction: column; 
     gap: 15px;
+  
     padding: 15px;
     text-align: center;
   }
 
-  /* Los grupos de enlaces se vuelven filas flexibles que envuelven si no caben */
   .nav-group {
-    flex-wrap: wrap;       /* Si los links no caben en una línea, bajan solos */
+    flex-wrap: wrap;       
     justify-content: center;
     gap: 15px;
     width: 100%;
+    scale: 1.5;
   }
 
-  /* Quitamos el margen derecho inline que tenías en JS para que no rompa el centrado en móvil */
   .nav-right {
     margin-right: 0 !important; 
   }
   
-  .nav-group a {
-    font-size: 0.9rem; /* Un pelo más chico para que quepa mejor en celulares */
+  .nav-link {
+    font-size: 0.85rem; 
     padding: 5px 10px;
   }
+  
+  /* 📱 OPCIONAL PARA MÓVILES: 
+     Si en celulares se ve muy amontonado el texto, puedes descomentar 
+     esta línea para ocultar el texto y que solo queden los íconos limpios */
+   .nav-link span {
+    display: none;
+
+  } 
 }

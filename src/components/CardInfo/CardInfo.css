@@ -1,0 +1,18 @@
+.btn-cancell {
+position: fixed;
+border-radius: 8px;
+right: 0px;
+height: 40px;
+width: 100px;
+z-index: 2;
+background: linear-gradient(135deg, #f72f8c, #630000);
+}
+.btn-confirm {
+position: fixed;
+border-radius: 8px;
+margin-left: 10px;
+height: 40px;
+width: 100px;
+z-index: 2;
+background: linear-gradient(135deg, #78f72f, #1d4e00);
+}

@@ -1,18 +1,13 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import {  useContext, useState, useEffect, type ReactNode } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
-type ThemeContextType = {
-  currentBackground: string;
-  changeBackground: (imgName: string) => void;
-};
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const apiUrl = import.meta.env.VITE_API_URL;
   
   // 1. Usamos un solo estado para controlar el fondo activo en la pantalla
   const [currentBackground, setCurrentBackground] = useState(() => {
-    return localStorage.getItem('user-bg') || 'chinese.png';
+    return localStorage.getItem('user-bg') || 'black.webp';
   });
 
   // 2. Traemos el fondo del usuario desde NestJS al cargar la app
@@ -23,10 +18,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           credentials: "include",
         });
         const me = await res.json();
-        if (me?.data?.avatar) {
+        if (me?.background) {
           // Si el backend tiene un avatar/fondo guardado, actualizamos el estado y el caché
-          setCurrentBackground(me.data.avatar);
-          localStorage.setItem('user-bg', me.data.avatar);
+          setCurrentBackground(me.background);
+          localStorage.setItem('user-bg', me.background);
+        }
+        else{
+          localStorage.setItem('user-bg', 'black.webp');
         }
       } catch (error) {
         console.error("Error al traer el fondo del usuario:", error);

@@ -14,12 +14,12 @@ type Props = {
   btnState: boolean;
   opacity: string;
   isAdmin: boolean;
+  vence: string;
 };
 
 function CardPlan({
-  // left,
+  vence,
   btnState,
-  // top,
   textSize,
   opacity,
   title,
@@ -102,6 +102,7 @@ function CardPlan({
         >
           🖋️
         </button>
+        <p style={{marginBottom: "0px", right: "100px", fontSize: "12px",color: "lightblue"}}>{vence}</p>
       </div>
     </div>
   );
