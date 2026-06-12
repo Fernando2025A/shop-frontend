@@ -12,16 +12,27 @@ interface Generator {
   name: string;
   userId: number;
   level: number;
+  upgradeCost?: number;
   lastClaimedAt: string;
   currentAccumulated: number;
   maxCapacity: number;
   passiveIncome: number;
+}
+interface Generators {
+  level: number;
+  upgradeCost: number;
+  maxStorage: number;
+  passiveIncome: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 function Tasks() {
   const apiUrl = import.meta.env.VITE_API_URL;
   const [claimed, setClaimed] = useState(true);
   const [generatorName, setGeneratorName] = useState("");
+  const [generators, setGenerators] = useState<Generators[]>([]);
   const [generator, setGenerator] = useState<Generator>({
     id: 0,
     userId: 0,
@@ -46,6 +57,16 @@ function Tasks() {
         setReward(data.reward);
       });
   }, [apiUrl]);
+ useEffect(() => {
+  const fetchGenerators = async() => {
+     const res = await fetch(`${apiUrl}/generator`, {
+      credentials: "include",
+    });
+    const data: Generators[] = await res.json();
+    setGenerators(data);
+  }
+   fetchGenerators();
+  }, [apiUrl]);
   useEffect(() => {
     fetch(`${apiUrl}/generator/info`, {
       credentials: "include",
@@ -58,7 +79,7 @@ function Tasks() {
         const generatorName = data.name[0].toUpperCase() + data.name.slice(1);
         setGeneratorName(generatorName);
       });
-  }, [apiUrl]);
+  }, [apiUrl, setGenerator]);
   const getReward = async () => {
     const res = await fetch(`${apiUrl}/tasks/dailyreward`, {
       credentials: "include",
@@ -115,10 +136,10 @@ function Tasks() {
     return formatTime(secondsToMax);
   };
 
+
   return (
     <div className="app-container">
       <NavBar selected="recompensas"></NavBar>
-
       {/* 🔥 Este contenedor nuevo agrupará la sección del juego */}
       <div className="game-layout">
         {/* COLUMNA IZQUIERDA (Daily + Status) */}
@@ -139,7 +160,7 @@ function Tasks() {
 
         {/* COLUMNA DERECHA (MoneyGenerator) */}
         <div className="layout-right-column">
-          <MoneyGenerator name={generatorName} onUpgradeClick={upgrade} imageSrc={`/images/generators/0${generator.level}.png`} level={generator.level} maxCapacity={generator.maxCapacity} productionPerSecond={generator.passiveIncome} storedMoney={generator.currentAccumulated}/>
+          <MoneyGenerator name={generatorName} upgradeCost={generators[generator.level]?.upgradeCost || 0} onUpgradeClick={upgrade} imageSrc={`/images/generators/0${generator.level}.png`} level={generator.level} maxCapacity={generator.maxCapacity} productionPerSecond={generator.passiveIncome} storedMoney={generator.currentAccumulated}/>
           <div style={{ marginTop: "20px" }}>
             {" "}
             {/* Un pequeño margen de separación */}

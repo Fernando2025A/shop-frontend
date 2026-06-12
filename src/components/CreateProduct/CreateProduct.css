@@ -6,7 +6,8 @@
   min-height: 90vh;
   width: 100%;
   padding: 20px;
-  margin-top: -60px;
+  margin-top: 0px;
+  overflow-y: auto;
   box-sizing: border-box;
 }
 
@@ -18,6 +19,8 @@
   width: 100%;
   max-width: 450px; /* Por defecto tamaño móvil */
   gap: 20px;
+  overflow-y: auto;
+  max-height: 90vh;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -202,4 +205,24 @@
   font-weight: bold;
   cursor: pointer;
   font-size: 1.5rem;
+}
+.form-select {
+  width: 100%;
+  padding: 10px;
+  background-color: #1a1a1a; /* Fondo oscuro */
+  color: #ffffff;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  border-color: #00ffcc; /* Tu clásico borde de neón al enfocar */
+}
+
+.form-select option {
+  background-color: #1a1a1a; /* Evita que las opciones salgan blancas */
+  color: #ffffff;
 }

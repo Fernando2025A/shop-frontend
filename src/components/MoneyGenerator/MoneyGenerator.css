@@ -55,6 +55,11 @@
   background-color: #6b21a8;
 }
 
+.generator-upgrade-btn:disabled {
+  background: #4b5563;
+  cursor: not-allowed;
+}
+
 /* Línea divisoria horizontal sutil */
 .money-generator-divider {
   height: 1px;

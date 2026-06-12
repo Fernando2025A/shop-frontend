@@ -27,7 +27,6 @@ function Store() {
   const [product, setProduct] = useState<Product[]>([]);
   const [display, setDisplay] = useState("none");
   const [createProductDisplay, setCreateProductDisplay] = useState("none");
-  const [showForm, setShowForm] = useState("none");
   const [alertText, setAlertText] = useState("");
   const [alertState, setAlertState] = useState("");
   const [productName, setProductName] = useState("");

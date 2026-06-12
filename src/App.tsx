@@ -12,7 +12,6 @@ import Tasks from "./pages/Generator/Generator";
 import Social from "./pages/Social/Social";
 import { CartPage } from "./components/CartPage/CartPage";
 import { RequireAuth } from "./context/AuthContext";
-import {CreateProduct} from "./components/CreateProduct/CreateProduct";
 
 function App() {
   return (

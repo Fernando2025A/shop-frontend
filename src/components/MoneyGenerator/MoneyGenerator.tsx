@@ -6,6 +6,7 @@ interface MoneyGeneratorProps {
   level?: number;
   name?: string;
   productionPerSecond?: number;
+  upgradeCost?: number | null | undefined;
   maxCapacity?: number;
   storedMoney?: number;
   imageSrc?: string; // Ruta de la imagen del cubo 3D
@@ -16,6 +17,7 @@ export const MoneyGenerator: React.FC<MoneyGeneratorProps> = ({
   level = 5,
   name = "generador de dinero",
   productionPerSecond = 5.00,
+  upgradeCost = 4000,
   maxCapacity = 1000,
   storedMoney = 670,
   imageSrc = "/path-to-your-cube-image.png", // Reemplaza por tu asset real
@@ -29,9 +31,10 @@ export const MoneyGenerator: React.FC<MoneyGeneratorProps> = ({
           <Zap size={22} className="header-zap-icon" />
           <h2>{name}</h2>
         </div>
-        <button className="generator-upgrade-btn" onClick={onUpgradeClick}>
+        <button className="generator-upgrade-btn" onClick={onUpgradeClick} disabled={upgradeCost == 0 ? true : false}>
           <ArrowUp size={16} />
-          <span>Mejorar</span>
+          <span>{upgradeCost == 0 ? "Máximo alcanzado" : "Mejorar"}</span>
+          <span style={{ display: upgradeCost == 0 ? "none" : "flex" }}>${upgradeCost}</span>
         </button>
       </div>
 

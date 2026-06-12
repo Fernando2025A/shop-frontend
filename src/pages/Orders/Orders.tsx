@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import NavBar from '../../components/NavBar'
 import { Navigate } from 'react-router-dom';
-import{ MyOrders } from '../../components/MyOrders/MyOrders';
+import MyOrders from '../../components/MyOrders';
 
 type Pedido = {
   id: number;
@@ -79,7 +79,7 @@ useEffect(() => {
   return (
     <div className='app-container'>
       <NavBar selected='pedidos'/>
-      <MyOrders />
+      <MyOrders action={claim} action2={cancel} orders={pedidos}/>
     </div>
     
   )
