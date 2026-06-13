@@ -5,11 +5,11 @@ import { useAuth } from "../../context/AuthContext";
 
 function Profile() {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const { user, refreshUser } = useAuth();
+  const { user } = useAuth();
   const [username, setUsername] = useState("");
   const [id, setId] = useState<number | undefined>(undefined);
-  const [visible, setVisible] = useState(false);
-  const [visible2, setVisible2] = useState(false);
+  // const [visible, setVisible] = useState(false);
+  // const [visible2, setVisible2] = useState(false);
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
   const [plan, setPlan] = useState(0);
@@ -53,12 +53,12 @@ function Profile() {
     window.location.reload();
   };
 
-  const turnVi = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    visible ? setVisible(false) : setVisible(true);
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    visible2 ? setVisible2(false) : setVisible2(true);
-  };
+  // const turnVi = () => {
+  //   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  //   visible ? setVisible(false) : setVisible(true);
+  //   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  //   visible2 ? setVisible2(false) : setVisible2(true);
+  // };
 
   const handleSubmit = async () => {
     try {

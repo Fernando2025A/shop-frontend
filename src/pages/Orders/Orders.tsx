@@ -16,7 +16,6 @@ type Pedido = {
 function Orders() {
   const apiUrl = import.meta.env.VITE_API_URL;
   const [auth, setAuth] = useState(null);
-  const [username, setUsername] = useState("");
   const [pedidos, setPedidos] = useState<Pedido[]>([]);
 
 useEffect(() => {
@@ -38,7 +37,7 @@ useEffect(() => {
           if (!res.ok) throw new Error('No autorizado')
           return res.json();
         })
-        .then((data) => {setAuth(true); setUsername(data.username)})
+        .then((data) => {setAuth(true)})
         .catch(() => setAuth(false))
     }, [apiUrl]);
   
