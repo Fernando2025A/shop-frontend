@@ -10,8 +10,9 @@ import Orders from "./pages/Orders/Orders";
 import Inventory from "./pages/Inventory/Inventory";
 import Tasks from "./pages/Generator/Generator";
 import Social from "./pages/Social/Social";
-import { CartPage } from "./components/CartPage/CartPage";
+import { CartPage } from "./pages/Cart/CartPage";
 import { RequireAuth } from "./context/AuthContext";
+import { Terms } from "./pages/Terms/Terms";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/home/rewards" element={<Tasks />} />
         <Route path="/home/social" element={<Social />} />
-        {/* <Route path="/home/product/create" element={<CreateProduct display="none" />} /> */}
+        <Route path="/terms" element={<Terms />}/>
       </Route>
     </Routes>
   );

@@ -7,7 +7,7 @@ import {
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import './CartPage.css';
-import NavBar from '../NavBar';
+import NavBar from '../../components/NavBar';
 
 export const CartPage: React.FC = () => {
   const apiUrl  = import.meta.env.VITE_API_URL;
@@ -21,7 +21,7 @@ export const CartPage: React.FC = () => {
   // Re-cargar el carrito cuando el usuario entra a esta página
   useEffect(() => {
     refetchCart();
-  }, []);
+  }, [refetchCart]);
 
   const checkout = async() => {
     setState(true);
@@ -246,7 +246,7 @@ export const CartPage: React.FC = () => {
             </button>
             <p className="checkout-terms-notice">
               <Lock size={12} />
-              <span>Al continuar, aceptas nuestros <a href="#terms">Términos y Condiciones</a></span>
+              <span>Al continuar, aceptas nuestros <a href="/terms">Términos y Condiciones</a></span>
             </p>
           </div>
         </div>

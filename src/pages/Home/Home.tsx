@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../App.css";
+import "./Home.css";
 import { useAuth } from "../../context/AuthContext";
 import NavBar from "../../components/NavBar";
 import Head from "../../components/Head";
@@ -8,6 +9,7 @@ import profile from "../../assets/profile.png";
 import store from "../../assets/store.png";
 import order from "../../assets/order.png";
 import Balance from "../../components/Balance/Balance";
+import Footer from "../../components/Footer/Footer";
 
 function Home() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -46,7 +48,7 @@ function Home() {
       }
     };
   return (
-    <div className="app-container">
+    <div className="home-container">
       <NavBar selected="INICIO" />
       <Balance value={newAmount} onChange={(value) => {setNewAmount(value)}} action={setAmountMe} btnText1={btnText} action2={() => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -60,12 +62,9 @@ function Home() {
       >
         Explora todas las opciones que tenemos para tí😎
       </p>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginRight: "25px" }}>
+      <div className='cards-container'>
         <Card
-        textSize={16}
-        btnColor="rgb(69, 24, 128)"
         img={profile}
-        titleColor="blueviolet"
         btnText="Ver perfil"
         text="Vea las opciones disponibles en su perfil"
         link="profile"
@@ -73,31 +72,22 @@ function Home() {
   
       ></Card>
       <Card
-        textSize={16}
-        btnColor="rgb(69, 24, 128)"
         img={store}
-        titleColor="blueviolet"
         btnText="Ver tienda"
         text="Vea lo que tenemos disponible en la tienda"
         link="store"
         title={"Tienda"}
       ></Card>
       <Card
-        textSize={16}
-        btnColor="rgb(69, 24, 128)"
         img={order}
-        titleColor="blueviolet"
         btnText="Ver pedidos"
-        text="Vea información sobre sus pedidos"
+        text="Vea información sobre los pedidos que ha realizado"
         link="orders"
         title={"Pedidos"}
-    
       ></Card>
       </div>
       
-      <footer className='footer-container'>
-        
-      </footer>
+    <Footer />
     </div>
   );
 }

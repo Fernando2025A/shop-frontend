@@ -1,28 +1,30 @@
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import "./Card.css";
 type Props = {
   title: string;
   link: string;
   text: string;
   btnText: string;
-  titleColor: string;
   img: string;
-  btnColor: string;
-  textSize: number;
+};
 
-}
-
-function Card({ textSize, title, link, text, btnText, titleColor, img, btnColor }: Props) {
+function Card({ title, link, text, btnText, img }: Props) {
+  const navigate = useNavigate();
+  const goTo = () => {
+    navigate(link);
+  };
   return (
-    <div className="card" style={{ overflowY: 'auto', maxWidth: "20vw", justifyContent: "center"}}>
-      <img style={{ height: "20vw", width: "20vw"}} src={img} className="card-img-top" alt="img"></img>
-      <div style={{ backgroundColor: 'black'}} className="card-body">
-        <h5 style={{ color: titleColor }} className="card-title">{title}</h5>
-        <p style={{ fontSize: `${textSize}px` }} className="card-text">{text}</p>
-        <Link style={{ backgroundColor: btnColor, color: 'bisque', borderColor: 'black'}} to={`${link}`} className="btn btn-primary">{btnText}</Link>
+    <div className="card-container">
+      <img className="image" src={img} alt="img"></img>
+      <div className="card-body">
+        <h5>{title}</h5>
+        <p className="card-text">{text}</p>
+        <button onClick={goTo} className="btn-link">
+          {btnText}
+        </button>
       </div>
-</div>
-  )
+    </div>
+  );
 }
 
-export default Card
+export default Card;

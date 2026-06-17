@@ -1,6 +1,7 @@
 .app-container {
-  min-height: 100cqh;
+  min-height: min-content;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 /* Contenedor global para login y register */

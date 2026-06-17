@@ -1,0 +1,18 @@
+.home-container {
+  display: block;
+  justify-content: center;
+  min-height: 100cqh;
+  overflow: hidden;
+}
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+@media (max-width: 1080px) {
+  .cards-container {
+    flex-direction: column;
+    width: max-content;
+    margin-left: 45px;
+  }
+}

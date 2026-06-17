@@ -1,0 +1,43 @@
+.terms-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+ 
+}
+.terms-container h3 {
+  color: rgb(0, 0, 0);
+}
+.terms-body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  padding: 25px 25px 25px 25px;
+}
+.terms-body h4 {
+  font-size: 20px;
+  font-weight: 650;
+  color: rgb(0, 153, 255);
+}
+.terms-body h5 {
+  margin-left: 15px;
+  font-size: 17px;
+  color: rgb(0, 0, 0);
+}
+.terms-body p {
+  margin-left: 30px;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+}
+.terms-body button {
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 650;
+}
+.end-container {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

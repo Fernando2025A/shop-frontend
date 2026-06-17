@@ -96,13 +96,13 @@ function Store() {
   return (
     <div className="app-container">
       <NavBar selected="TIENDA" />
-      <div className="info-alert" style={{ display: display }}>
+      <div className="info-alert" style={{ display: display, zIndex: "3" }}>
         <p>{alertText}</p>
       </div>
       <div className="top-container">
        
         <Balance amount={user?.amount || 0} />
-        <button style={{ display: admin ? "flex" : "none"}} onClick={() => turnProductForm()}>Crear producto</button>
+        <button className='btn-create-product' style={{ display: admin ? "flex" : "none"}} onClick={() => turnProductForm()}>Crear producto</button>
         <CreateProduct action={turnProductForm} display={createProductDisplay} />
         <div className="intro-container">
           <h4>Tienda</h4>
