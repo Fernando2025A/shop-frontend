@@ -26,7 +26,7 @@ export const StoreCard: React.FC<StoreCardProps> = ({
   onAddToCartClick
 }) => {
   return (
-    <div className="store-card-container">
+    <div style={{ opacity: availableStock < 1 ? "0.5" : "1"}} className="store-card-container">
       {/* Miniatura superior */}
       <div className="store-card-banner">
         <img src={imageSrc} alt={title} className="banner-media" />
@@ -48,7 +48,7 @@ export const StoreCard: React.FC<StoreCardProps> = ({
               ${price}
             </span>
           </div>
-          <div className="spec-item">
+          <div style={{ display: finalPrice == price ? "none" : "flex" }} className="spec-item">
             <span className="spec-label">Tu precio</span>
             <span className="spec-value price-green">
               <Coins size={14} />
@@ -82,9 +82,9 @@ export const StoreCard: React.FC<StoreCardProps> = ({
             <span>Detalles</span>
           </button>
           
-          <button className="btn-primary-action" onClick={onAddToCartClick}>
+          <button disabled={availableStock < 1 ? true : false} className="btn-primary-action" onClick={onAddToCartClick}>
             <ShoppingCart size={16} />
-            <span>Agregar al carrito</span>
+            <span>{availableStock < 1 ? "Agotado" : "Agregar a carrito"}</span>
           </button>
         </div>
       </div>

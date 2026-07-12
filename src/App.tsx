@@ -12,6 +12,7 @@ import Tasks from "./pages/Generator/Generator";
 import Social from "./pages/Social/Social";
 import { CartPage } from "./components/CartPage/CartPage";
 import { RequireAuth } from "./context/AuthContext";
+import {CreateProduct} from "./components/CreateProduct/CreateProduct";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/home/rewards" element={<Tasks />} />
         <Route path="/home/social" element={<Social />} />
+        {/* <Route path="/home/product/create" element={<CreateProduct display="none" />} /> */}
       </Route>
     </Routes>
   );

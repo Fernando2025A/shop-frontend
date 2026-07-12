@@ -4,7 +4,8 @@ import './MoneyGenerator.css';
 
 interface MoneyGeneratorProps {
   level?: number;
-  productionPerHour?: number;
+  name?: string;
+  productionPerSecond?: number;
   maxCapacity?: number;
   storedMoney?: number;
   imageSrc?: string; // Ruta de la imagen del cubo 3D
@@ -13,7 +14,8 @@ interface MoneyGeneratorProps {
 
 export const MoneyGenerator: React.FC<MoneyGeneratorProps> = ({
   level = 5,
-  productionPerHour = 5.00,
+  name = "generador de dinero",
+  productionPerSecond = 5.00,
   maxCapacity = 1000,
   storedMoney = 670,
   imageSrc = "/path-to-your-cube-image.png", // Reemplaza por tu asset real
@@ -25,7 +27,7 @@ export const MoneyGenerator: React.FC<MoneyGeneratorProps> = ({
       <div className="money-generator-header">
         <div className="header-title-zone">
           <Zap size={22} className="header-zap-icon" />
-          <h2>Generador de dinero</h2>
+          <h2>{name}</h2>
         </div>
         <button className="generator-upgrade-btn" onClick={onUpgradeClick}>
           <ArrowUp size={16} />
@@ -60,9 +62,9 @@ export const MoneyGenerator: React.FC<MoneyGeneratorProps> = ({
           <div className="stat-row">
             <div className="stat-label-side">
               <Clock size={18} className="stat-icon" />
-              <span>Producción por hora</span>
+              <span>Producción por segundo</span>
             </div>
-            <span className="stat-value text-green">${productionPerHour.toFixed(2)}</span>
+            <span className="stat-value text-green">${productionPerSecond.toFixed(3)}</span>
           </div>
 
           <div className="stat-row">

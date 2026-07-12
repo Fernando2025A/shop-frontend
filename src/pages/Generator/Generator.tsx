@@ -9,6 +9,7 @@ import { GeneratorUpgrades } from "../../components/GeneratorUpgrades/GeneratorU
 
 interface Generator {
   id: number;
+  name: string;
   userId: number;
   level: number;
   lastClaimedAt: string;
@@ -20,9 +21,11 @@ interface Generator {
 function Tasks() {
   const apiUrl = import.meta.env.VITE_API_URL;
   const [claimed, setClaimed] = useState(true);
+  const [generatorName, setGeneratorName] = useState("");
   const [generator, setGenerator] = useState<Generator>({
     id: 0,
     userId: 0,
+    name: "",
     level: 0,
     lastClaimedAt: "",
     currentAccumulated: 0,
@@ -52,6 +55,8 @@ function Tasks() {
       })
       .then((data) => {
         setGenerator(data);
+        const generatorName = data.name[0].toUpperCase() + data.name.slice(1);
+        setGeneratorName(generatorName);
       });
   }, [apiUrl]);
   const getReward = async () => {
@@ -71,6 +76,13 @@ function Tasks() {
       currentAccumulated: 0, // Reinicia la cantidad acumulada al reclamar
     }));
   };
+
+  const upgrade = async () => {
+    await fetch(`${apiUrl}/generator/upgrade`, {
+      credentials: "include",
+    });
+    window.location.reload(); // Recarga la página para reflejar los cambios después de la mejora
+  }
 
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600);
@@ -127,7 +139,7 @@ function Tasks() {
 
         {/* COLUMNA DERECHA (MoneyGenerator) */}
         <div className="layout-right-column">
-          <MoneyGenerator imageSrc={`/images/generators/0${generator.level}.png`} level={generator.level} maxCapacity={generator.maxCapacity} productionPerHour={generator.passiveIncome * 3600} storedMoney={generator.currentAccumulated}/>
+          <MoneyGenerator name={generatorName} onUpgradeClick={upgrade} imageSrc={`/images/generators/0${generator.level}.png`} level={generator.level} maxCapacity={generator.maxCapacity} productionPerSecond={generator.passiveIncome} storedMoney={generator.currentAccumulated}/>
           <div style={{ marginTop: "20px" }}>
             {" "}
             {/* Un pequeño margen de separación */}

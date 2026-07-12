@@ -8,23 +8,31 @@ button{
 input{
   color: rgb(255, 250, 244);
   background-color: rgb(19, 18, 18);
-  border-color: rgba(119, 136, 153, 0);
+  border-color: rgb(0, 128, 255);
   font-size: larger;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-body{
+body {
   --bg-app-image: url('../public/images/black.webp');
 
-  background-size: 140%;
+  /* SOLUCIÓN: Asegura que la imagen cubra todo el alto y ancho disponible siempre */
+  background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-
   background-repeat: no-repeat;
-  background-image: var(--bg-app-image);
+  
+  /* Color de respaldo oscuro por si la imagen tarda en cargar o se estira */
+  background-color: #000; 
+
+  /* Superposición oscura */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), var(--bg-app-image);
+  
   justify-content: center;
   min-height: 100vh;
   margin: 0;
   animation: sutilMovimientoEspacial 60s linear infinite;
+
+  /* Mantener fixed en PC, pero desactivarlo sutilmente si es necesario mediante cover */
+  background-attachment: scroll; 
 }
 @keyframes sutilMovimientoEspacial {
   0% {

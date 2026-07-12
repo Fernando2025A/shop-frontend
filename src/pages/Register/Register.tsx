@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
+import { useAuth } from "../../context/AuthContext";
 
 function Register() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -14,6 +15,7 @@ function Register() {
   const [btn, setBtn] = useState("primary");
   const [isDisabled, setDisabled] = useState(false);
   const navigate = useNavigate();
+  const { refreshUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,6 +76,7 @@ function Register() {
       });
 
       if (loginRes.ok) {
+        await refreshUser();
         navigate("/home");
       }
       if (!response.ok) {

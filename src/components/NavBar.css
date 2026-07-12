@@ -61,11 +61,11 @@
   }
 
   .nav-group {
-    flex-wrap: wrap;       
+
     justify-content: center;
     gap: 15px;
     width: 100%;
-    scale: 1.5;
+    scale: 1.8;
   }
 
   .nav-right {
@@ -82,6 +82,5 @@
      esta línea para ocultar el texto y que solo queden los íconos limpios */
    .nav-link span {
     display: none;
-
   } 
 }

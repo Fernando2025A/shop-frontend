@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../../App.css";
 import "./Login.css"
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -13,6 +14,7 @@ function Login() {
   const [btn, setBtn] = useState("primary");
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
+  const { refreshUser } = useAuth();
 
   const notActive = () => {
     setDisabled(true);
@@ -58,9 +60,10 @@ function Login() {
       }
       setColor("green");
       setText("Login exitoso.");
+      await refreshUser();
       setTimeout(() => {
         navigate("/home");
-      }, 500);
+      }, 1500);
     } catch (error) {
       setColor("red");
       if (error.message.toString() === "Failed to fetch") {
@@ -74,7 +77,7 @@ function Login() {
   };
 
   return (
-    <div className="auth-login-bg">
+    <div className="login-container">
       <form onSubmit={handleSubmit} className="auth-login-card">
         <h1 className="auth-login-title">Iniciar sesión</h1>
 

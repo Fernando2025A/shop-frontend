@@ -1,11 +1,52 @@
-.balance{
+.balance-container {
   display: flex;
-  color: rgb(68, 255, 152);
-  top: 10%;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
-  
+  background-color: rgb(22, 22, 22);
+  padding: 10px 10px 10px 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: max-content;
+  height: min-content;
+  border-radius: 8px;
   right: 4%;
 }
-.hBalance{
-  font-size: larger;
+
+.balance-container input {
+  border-radius: 8px;
+}
+
+.balance-container p {
+  font-size: 14px;
+  border-width: 12px;
+}
+.balance-info {
+  display: flex;
+  gap: 4px;
+  flex-direction: row;
+}
+
+.balance-info h4 {
+  color: lightgreen;
+  height: min-content;
+  font-weight: 700;
+}
+.balance-info button {
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  background: rgb(42, 87, 0);
+  text-align: center;
+  font-size: 18px;
+}
+
+.balance-action {
+  display: flex;
+  flex-direction: row;
+}
+.balance-action button {
+  font-size: 22px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgb(118, 115, 255), rgb(25, 0, 255));
 }
